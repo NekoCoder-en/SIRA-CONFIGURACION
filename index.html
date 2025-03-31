@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registros de Huellas</title>
+</head>
+
+<body>
+    <h1>Registros de Huellas</h1>
+    <table border="1" id="fingerprintTable">
+        <thead>
+            <tr>
+                <th>Finger ID</th>
+                <th>Template</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Los registros se agregarán aquí -->
+        </tbody>
+    </table>
+
+    <script>
+        async function fetchFingerprints() {
+            const response = await fetch('https://TU_SERVIDOR/api/fingerprint');
+            const fingerprints = await response.json();
+
+            const tableBody = document.querySelector('#fingerprintTable tbody');
+            fingerprints.forEach(fingerprint => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+          <td>${fingerprint.fingerId}</td>
+          <td>${fingerprint.template}</td>
+          <td>${fingerprint.timestamp}</td>
+        `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        fetchFingerprints();
+    </script>
+</body>
+
+</html>
