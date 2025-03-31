@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -47,8 +46,8 @@ app.get('/api/fingerprint', async (req, res) => {
   res.status(200).json(fingerprints);
 });
 
-// Iniciar servidor
+// Iniciar servidor en el puerto asignado por Railway o en el puerto 3000 por defecto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Servidor escuchando en puerto ${PORT}`);
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
 });
