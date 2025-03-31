@@ -21,11 +21,6 @@ const FingerprintSchema = new mongoose.Schema({
 });
 const Fingerprint = mongoose.model('Fingerprint', FingerprintSchema);
 
-// Ruta para la raíz
-app.get('/', (req, res) => {
-  res.send('Servidor funcionando correctamente');
-});
-
 // Ruta para guardar datos de huella
 app.post('/api/fingerprint', async (req, res) => {
   const { fingerId, template, timestamp } = req.body;
@@ -48,7 +43,6 @@ app.get('/api/fingerprint', async (req, res) => {
 });
 
 // Iniciar servidor
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en puerto ${PORT}`);
+app.listen(3000, () => {
+  console.log('Servidor escuchando en puerto 3000');
 });
